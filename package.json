@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "knex": "knex"
+    "dev": "nodemon server",
+    "knex": "knex --knexfile ./server/db/knexfile.js" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+ 
   "dependencies": {
     "express": "^4.17.1",
     "jest": "^26.4.2",
