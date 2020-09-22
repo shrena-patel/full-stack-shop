@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server",
-    "knex": "knex --knexfile ./server/db/knexfile.js" 
+    "knex": "knex --knexfile ./server/db/knexfile.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
- 
   "dependencies": {
+    "csv-parser": "^2.3.3",
     "express": "^4.17.1",
     "jest": "^26.4.2",
     "knex": "^0.21.5",
