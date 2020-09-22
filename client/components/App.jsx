@@ -1,28 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setProducts, addToCart } from '../actions'
+import { setProducts} from '../actions'
 import { getProducts } from '../apis/products'
+import Products from './Products'
 
-const imagePlaceholderUrl = "https://lunawood.com/wp-content/uploads/2018/02/placeholder-image.png"
 
 class App extends React.Component {
  
     componentDidMount() {
+        // getProducts()
+        //     .then(products => {
+        //         this.props.dispatch(setProducts(products))
+        //     })
+        this.fetchProducts()
+    }
+    
+    fetchProducts = () => {
         getProducts()
             .then(products => {
                 this.props.dispatch(setProducts(products))
             })
     }
-    //fetchProducts()
+
+    checkout = () => {
+        
+    }
 
 
 
     render() {
         const products = this.props.products
+        const cartCount = this.props.cartCount
         return (
             <>
-                <h1 className="shop-title">Ye Olde Shoppe</h1>
-                <ul className="product-list">
+                <header className="header">
+                    <h1 className="shop-title">Ye Olde Shoppe</h1>
+                    <h2>Cart ({cartCount})<button>Checkout</button></h2>
+                </header>
+                <Products products={this.props.products}/>
+                {/* <ul className="product-list">
                     {products.map(p => {
                         return (
                             <li key={p.id} className="product-item">
@@ -35,7 +51,7 @@ class App extends React.Component {
                             </li>
                         )
                     })}
-                </ul>
+                </ul> */}
             </>
 
         )
@@ -44,7 +60,11 @@ class App extends React.Component {
 
 function mapStateToProps(globalState) {
     return {
-        products: globalState.products
+        products: globalState.products,
+        cartCount: globalState.cart.reduce((total, item) => {
+            return total + item.quantity
+        }, 0),
+        cart: globalState.cart
     }
 }
 export default connect(mapStateToProps)(App)
