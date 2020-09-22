@@ -1,0 +1,28 @@
+* {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.product-list {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-flow: wrap;
+}
+
+.product-item {
+    padding: 20px;
+    list-style: none;
+    text-align: center;
+}
+
+.product-title {
+    font-weight: 300;
+}
+
+.shop-title {
+    text-align: center;
+    font-weight: 400;
+}
+
+.button {
+    display: block;
+}

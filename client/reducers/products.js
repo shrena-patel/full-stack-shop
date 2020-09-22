@@ -1,3 +1,5 @@
+import {SET_PRODUCTS } from '../actions'
+
 const initialState = [
     {
         id: 1,
@@ -13,6 +15,8 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
+        case SET_PRODUCTS:
+            return action.products
         default:
             return state
     }
